@@ -70,3 +70,23 @@ notesobj.splice(index,1);
 localStorage.setItem('notes', JSON.stringify(notesobj));
 shownotes();
 }
+
+
+let search=document.getElementById('searchtext');
+
+search.addEventListener("input",function(){
+    let inputval=search.value;
+
+    console.log(inputval);
+    let notecards= document.getElementsByClassName('notecard');
+
+    Array.from(notecards).forEach(function(element){
+        let cardtxt= element.getElementsByTagName('p')[0].innerText;
+        if(cardtxt.includes(inputval)){
+            element.style.display="block";
+        }
+        else{
+            element.style.display="none";
+        }
+    })
+})
