@@ -55,3 +55,18 @@ function shownotes() {
         noteselem.innerHTML= `<h6> Nothing to show please Add notes </h6>`;
     }
 }
+
+function deletenotes(index){
+
+    let notes = localStorage.getItem('notes');
+
+    if (notes == null) {
+        notesobj = [];
+    } else {
+        notesobj = JSON.parse(notes)
+    }
+
+notesobj.splice(index,1);
+localStorage.setItem('notes', JSON.stringify(notesobj));
+shownotes();
+}
